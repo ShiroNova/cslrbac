@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Access Control Demo</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="background-shape background-shape--one"></div>
+	<div class="background-shape background-shape--two"></div>
+
+	<main class="shell">
+		<section class="hero-panel">
+			<div class="brand-pill">Access Control Demo</div>
+			<h1>Role-based access for students and teachers.</h1>
+			<p>
+				A simple showcase of how a shared portal can reveal different data and tools
+				depending on whether the user signs in as a student or a teacher.
+			</p>
+
+			<div class="feature-list">
+				<div class="feature-card">
+					<span class="feature-label">Students</span>
+					<strong>Personal details, marks, attendance, timetable.</strong>
+				</div>
+				<div class="feature-card">
+					<span class="feature-label">Teachers</span>
+					<strong>Class roster, assignment tools, performance overview.</strong>
+				</div>
+			</div>
+		</section>
+
+		<section class="workspace">
+			<div class="panel auth-panel is-active" id="authPanel">
+				<div class="panel-header">
+					<div>
+						<p class="eyebrow">Login</p>
+						<h2>Choose your role</h2>
+					</div>
+					<span class="status-chip">Secure demo</span>
+				</div>
+
+				<form class="login-form" id="loginForm">
+					<div>
+						<span>Account type</span>
+						<div class="role-switch" role="radiogroup" aria-label="Select account type">
+							<input type="radio" name="role" id="studentRole" value="student" checked>
+							<label for="studentRole">Student</label>
+							<input type="radio" name="role" id="teacherRole" value="teacher">
+							<label for="teacherRole">Teacher</label>
+						</div>
+					</div>
+
+					<label>
+						<span>Name</span>
+						<input type="text" id="nameInput" placeholder="Enter your name"  required>
+					</label>
+
+					<label>
+						<span>ID</span>
+						<input type="text" id="idInput" placeholder="Student ID / Staff ID" required>
+					</label>
+
+					<button type="submit" class="primary-btn">Enter dashboard</button>
+				</form>
+			</div>
+
+			<div class="panel dashboard-panel" id="studentDashboard" aria-hidden="true">
+				<div class="panel-header">
+					<div>
+						<p class="eyebrow">Student view</p>
+						<h2>Personal dashboard</h2>
+					</div>
+					<button class="ghost-btn" type="button" data-back>Switch role</button>
+				</div>
+
+				<div class="dashboard-grid dashboard-grid--student">
+					<article class="summary-card accent-card">
+						<p class="card-kicker">Welcome back</p>
+						<h3 id="studentName">Prasad Sahil</h3>
+						<p id="studentId">Student ID: 205124069</p>
+						<div class="avatar-row">
+							<div class="avatar">AS</div>
+							<div>
+								<strong>Class MCA</strong>
+								<span>Roll No. 205124069</span>
+							</div>
+						</div>
+					</article>
+
+					<article class="stat-card">
+						<span>Overall marks</span>
+						<strong>86%</strong>
+						<p>Above class average in core subjects.</p>
+					</article>
+
+					<article class="stat-card">
+						<span>Attendance</span>
+						<strong>94%</strong>
+						<p>8 days present out of the last 30.</p>
+					</article>
+
+					<article class="info-card wide-card">
+						<div class="card-head">
+							<h3>Subject-wise marks</h3>
+							<span class="mini-tag">Updated today</span>
+						</div>
+						<div class="marks-list">
+							<div class="marks-row"><span>Mathematics</span><strong>92</strong></div>
+							<div class="marks-row"><span>Science</span><strong>88</strong></div>
+							<div class="marks-row"><span>English</span><strong>84</strong></div>
+							<div class="marks-row"><span>Social Studies</span><strong>81</strong></div>
+						</div>
+					</article>
+
+					<article class="info-card">
+						<div class="card-head">
+							<h3>Upcoming classes</h3>
+							<span class="mini-tag">Today</span>
+						</div>
+						<ul class="compact-list">
+							<li>09:00 - Mathematics</li>
+							<li>11:00 - Science Lab</li>
+							<li>02:00 - English</li>
+						</ul>
+					</article>
+
+					<article class="info-card">
+						<div class="card-head">
+							<h3>Recent notice</h3>
+							<span class="mini-tag">Portal</span>
+						</div>
+						<p>
+							Your project submission for Computer Studies is due on Friday.
+						</p>
+					</article>
+				</div>
+			</div>
+
+			<div class="panel dashboard-panel" id="teacherDashboard" aria-hidden="true">
+				<div class="panel-header">
+					<div>
+						<p class="eyebrow">Teacher view</p>
+						<h2>Class dashboard</h2>
+					</div>
+					<button class="ghost-btn" type="button" data-back>Switch role</button>
+				</div>
+
+				<div class="dashboard-grid dashboard-grid--teacher">
+					<article class="summary-card accent-card teacher-accent">
+						<p class="card-kicker">Class overview</p>
+						<h3 id="teacherName">Dr. B. Janet</h3>
+						<p id="teacherId">Staff ID: T-1092</p>
+						<div class="class-badge">Class MCA · 113 students</div>
+					</article>
+
+					<article class="stat-card">
+						<span>Class average</span>
+						<strong>78%</strong>
+						<p>+4% improvement from last term.</p>
+					</article>
+
+					<article class="stat-card">
+						<span>Assignments active</span>
+						<strong>6</strong>
+						<p>Two new submissions pending review.</p>
+					</article>
+
+					<article class="info-card wide-card">
+						<div class="card-head">
+							<h3>Class performance</h3>
+							<span class="mini-tag">Whole class</span>
+						</div>
+						<div class="table-wrap">
+							<table>
+								<thead>
+									<tr>
+										<th>Student</th>
+										<th>Attendance</th>
+										<th>Average</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr><td>Ananya</td><td>98%</td><td>91%</td><td>Excellent</td></tr>
+									<tr><td>Dev</td><td>93%</td><td>84%</td><td>Good</td></tr>
+									<tr><td>Meera</td><td>88%</td><td>76%</td><td>Needs support</td></tr>
+									<tr><td>Rohan</td><td>96%</td><td>89%</td><td>Excellent</td></tr>
+								</tbody>
+							</table>
+						</div>
+					</article>
+
+					<article class="info-card">
+						<div class="card-head">
+							<h3>Assignments</h3>
+							<span class="mini-tag">Manage</span>
+						</div>
+						<ul class="compact-list">
+							<li>Set mathematics worksheet</li>
+							<li>Review science lab reports</li>
+							<li>Share revision notes</li>
+						</ul>
+					</article>
+
+					<article class="info-card">
+						<div class="card-head">
+							<h3>Teacher tools</h3>
+							<span class="mini-tag">Actions</span>
+						</div>
+						<ul class="compact-list">
+							<li>Mark attendance</li>
+							<li>Send class announcement</li>
+							<li>Approve submissions</li>
+						</ul>
+					</article>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<script>
+		const authPanel = document.getElementById('authPanel');
+		const studentDashboard = document.getElementById('studentDashboard');
+		const teacherDashboard = document.getElementById('teacherDashboard');
+		const loginForm = document.getElementById('loginForm');
+		const studentName = document.getElementById('studentName');
+		const studentId = document.getElementById('studentId');
+		const teacherName = document.getElementById('teacherName');
+		const teacherId = document.getElementById('teacherId');
+		const nameInput = document.getElementById('nameInput');
+		const idInput = document.getElementById('idInput');
+		const roleInputs = document.querySelectorAll('input[name="role"]');
+		const backButtons = document.querySelectorAll('[data-back]');
+
+		function showDashboard(role) {
+			authPanel.classList.remove('is-active');
+			authPanel.setAttribute('aria-hidden', 'true');
+			studentDashboard.classList.remove('is-active');
+			teacherDashboard.classList.remove('is-active');
+
+			if (role === 'student') {
+				studentName.textContent = nameInput.value.trim() || 'Student';
+				studentId.textContent = `Student ID: ${idInput.value.trim() || 'N/A'}`;
+				studentDashboard.classList.add('is-active');
+				studentDashboard.setAttribute('aria-hidden', 'false');
+				teacherDashboard.setAttribute('aria-hidden', 'true');
+			} else {
+				teacherName.textContent = nameInput.value.trim() || 'Teacher';
+				teacherId.textContent = `Staff ID: ${idInput.value.trim() || 'N/A'}`;
+				teacherDashboard.classList.add('is-active');
+				teacherDashboard.setAttribute('aria-hidden', 'false');
+				studentDashboard.setAttribute('aria-hidden', 'true');
+			}
+		}
+
+		loginForm.addEventListener('submit', (event) => {
+			event.preventDefault();
+			const selectedRole = document.querySelector('input[name="role"]:checked').value;
+			showDashboard(selectedRole);
+		});
+
+		backButtons.forEach((button) => {
+			button.addEventListener('click', () => {
+				studentDashboard.classList.remove('is-active');
+				teacherDashboard.classList.remove('is-active');
+				studentDashboard.setAttribute('aria-hidden', 'true');
+				teacherDashboard.setAttribute('aria-hidden', 'true');
+				authPanel.setAttribute('aria-hidden', 'false');
+				authPanel.classList.add('is-active');
+			});
+		});
+
+		roleInputs.forEach((input) => {
+			input.addEventListener('change', () => {
+				document.body.dataset.role = input.value;
+			});
+		});
+
+		document.body.dataset.role = 'student';
+	</script>
+</body>
+</html>
